@@ -1,0 +1,39 @@
+---
+title: "Task 3"
+author: "Braden Burt"
+date: "January 16, 2020"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Qestion 1
+
+Do highest taxing cities create better places to live?
+
+This question, I believe, could be answered by data.  I think that there are several metrics that we could choose for "better places to live."  For example, are crime rates lower?  Do people make more money because companies want to be stationed and do business there?  Are suicide rates lower than other places?  I think these could show if government programs in the high taxing cities are better and actually doing their inteded jobs.
+
+Link[https://www.nber.org/papers/w22778]
+This paper looks into the "long-run changes in the structure of business income and business taxation in the United States."  This isn't exactly my question, but could prove helpful to add to my scopes.
+
+## Question 2
+
+Which car companies are the best in the United States?
+
+For this question I can think of a few metrics that would show a good comparison of how car companies and their competitors are doing.  I think this could be a good system to analyze and there would be good data to back show which is doing best.
+
+Link[https://insurify.com/insights/most-popular-cars-by-state-2019/]
+This study is pretty similar to what I would ask.  This breaks it down to the best selling car models over the country, and then again by state, then gives stats on the individual cars that could be the reason that they are the most popular.
+
+
+## Question 3
+
+Can you choose a good trade based soley on stats?
+
+Maybe not the best question for the idea, could need to be reworked or rephrased.  However, can you choose a good trade in the MLB based on the players stats and previous stats form previous trades?
+
+Link[https://www.nationalreview.com/2018/02/major-league-baseballs-competitive-balance-thanks-analytics/]
+This article talks about how in the past, using data analytics has helped teams make good signs and trades.
+
+
