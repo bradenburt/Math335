@@ -1,0 +1,72 @@
+---
+title: "Wealth and Life Expectancy"
+author: "Braden Burt"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:  
+    keep_md: true
+    toc: true
+    toc_float: true
+    code_folding: hide
+    fig_height: 6
+    fig_width: 12
+    fig_align: 'center'
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+```{r load_libraries, include=FALSE}
+# Use this R-Chunk to load all your libraries!
+#install.packages("tidyverse") # run this line once in console to get package
+library(tidyverse)
+library(dplyr)
+library(gapminder)
+```
+
+```{r load_data}
+# Use this R-Chunk to import all your datasets!
+dat <- gapminder %>%
+  filter(country != "Kuwait") %>%
+  group_by(continent, year) %>%
+  summarise(newmean = weighted.mean(gdpPercap, pop), sumofpop = sum(pop/100000))
+```
+
+## Background
+
+I learned a lot about how to plot during this Case Study.  It was really helpful to learn the basics of making graphs in R, but I also found that this assignment presented the chance to experiment with different functions in R until I found the one to make the desired effect.  As well as plotting, I feel that now I understand more of how to sort through and see the dataset I'm working with.
+
+## Data Wrangling
+
+```{r tidy_data}
+# Use this R-Chunk to clean & wrangle your data!
+
+```
+
+## Data Visualization
+
+```{r plot_data, echo=FALSE}
+# Use this R-Chunk to plot & visualize your data!
+ggplot(data = gapminder %>% filter(country != "Kuwait"), mapping = aes(x = lifeExp, y = gdpPercap, color = continent, size = pop/100000)) + 
+  geom_point() + 
+  theme_bw() + 
+  scale_y_continuous(trans = "sqrt") +
+  facet_wrap(~year, ncol = 12) + 
+  labs(size = "Population (100k)", color = "Continent", x = "Life Expectancy",y = "GDP per capita")
+ggsave("lifeExp_vs_gdpPercap.png", width = 15)
+
+ggplot(data = gapminder %>% filter(country != "Kuwait")) + 
+  geom_line(mapping = aes(x = year, y = gdpPercap, color = continent, group = country, size = 0.1)) +
+  geom_point(mapping = aes(x = year, y = gdpPercap, color = continent, group = country, size = pop/100000)) +
+  geom_line(data = dat, mapping = aes(x = year, y = newmean)) + 
+  geom_point(data = dat, mapping = aes(x = year, y = newmean, size = sumofpop)) +
+  theme_bw() + 
+  facet_wrap(~continent, ncol = 5) +
+  labs(size = "Population (100k)", color = "Continent", x = "Year", y = "GDP per capita")
+ggsave("year_vs_gdpPercap.png", width = 15)
+```
+
+## Conclusions
